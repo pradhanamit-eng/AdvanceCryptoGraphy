@@ -24,8 +24,8 @@ public class Diffie_Hellman
 	 
 	 if(S_A==S_B)
 	 {
-	 System.out.println("ALice and Bob can communicate with each other!!!");
-	 System.out.println("They share a secret no = "+S_A); 
+		 System.out.println("ALice and Bob can communicate with each other!!!");
+		 System.out.println("They share a secret no = "+S_A); 
 	 }
 	 
 	 else
