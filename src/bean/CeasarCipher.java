@@ -3,44 +3,87 @@ package bean;
 import java.util.Scanner;
 
 public class CeasarCipher {
-	String txt;
-	int key;
-	char a;
-	String ciphertext = "";
-
-	public void caesarCiphar() {
+	public static void main(String[] args) 
+	{
+		String msg;
+		String enc_msg = "";
+		int key;
+		
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the Plain Text:\n");
-		txt = sc.nextLine();
-		System.out.println("Enter the Key:\n");
+		System.out.println("Enter the Message:");
+		msg = sc.next();
+		
+		System.out.println("Enter key:");
 		key = sc.nextInt();
-
-		for (int i = 0; i < txt.length(); i++) {
-			a = txt.charAt(i);
-
-			if (a >= 'a' && a <= 'z') {
-				a = (char) (a + key);
-				if (a > 'z') {
-					a = (char) (a + 'a' - 'z' - 1);
+		
+		//------------encryption
+		char ch;
+		for (int i = 0; i < msg.length(); i++) 
+		{ 
+			ch = msg.charAt(i);
+			
+			if(ch>='a' && ch<='z')
+			{
+				ch = (char) (ch + key) ;
+				if(ch > 'z')
+				{
+					ch = (char) (ch - 'z'+'a' -1) ;
 				}
-				ciphertext = ciphertext + a;
-			} else if (a >= 'A' && a <= 'Z') {
-				a = (char) (a + key);
-				if (a > 'Z') {
-					a = (char) (a + 'A' - 'Z' - 1);
-				}
-				ciphertext = ciphertext + a;
-			} else {
-				ciphertext = ciphertext + a;
+				
+				enc_msg += ch;
 			}
-
+			else if(ch >= 'A' && ch <= 'Z')
+			{
+				ch = (char) (ch + key) ;
+				if(ch > 'Z')
+				{
+					ch = (char) (ch - 'Z'+ 'A' -1) ;
+				}
+				
+				enc_msg += ch;
+			}
+			else
+			{
+				enc_msg += ch;
+			}
+			
 		}
-		System.out.println(" ciphertext : " + ciphertext);
-	}
-
-	public static void main(String[] args) {
-		CeasarCipher c = new CeasarCipher();
-		c.caesarCiphar();
+		System.out.println("Encrypted Message:"+enc_msg);
+		
+		//------------decryption
+				char ch1;
+				String denc_msg = "";
+				for (int i = 0; i < msg.length();++i) 
+				{ 
+					ch1 = enc_msg.charAt(i);
+					
+					if(ch1>='a' && ch1<='z')
+					{
+						ch1 = (char) (ch1 - key) ;
+						if(ch1 < 'a')
+						{
+							ch1 = (char) (ch1 - 'z'+'a' +1) ;
+						}
+						
+						denc_msg += ch1;
+					}
+					else if(ch1 >= 'A' && ch1 <= 'Z')
+					{
+						ch1 = (char) (ch1 - key) ;
+						if(ch1 < 'A')
+						{
+							ch1 = (char) (ch1 - 'Z'+ 'A' +1) ;
+						}
+						
+						denc_msg += ch1;
+					}
+					else
+					{
+						denc_msg += ch1;
+					}
+					
+				}
+				System.out.println("Decrypted Message:"+denc_msg);
 	}
 
 }

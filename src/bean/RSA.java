@@ -29,6 +29,7 @@ public class RSA {
 		{
 			if(gcd(e,z)==1)
 			{
+				
 				break;
 			}
 		}

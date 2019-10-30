@@ -19,9 +19,9 @@ public class VigenereCipher {
 		System.out.println("------Encryption---Cipher Text----------");
 		for (int i = 0; i < plaintxt.length(); i++) 
 		{
-			Pi = v.alphabetToNumber(plaintxt.charAt(i));
+			Pi = ((plaintxt.charAt(i))-97);
 			Ci = (key + Pi)%26;	
-				System.out.print(v.numberToAlphabet(Ci));	
+				System.out.print((char) (Ci+97));	
 		}
 		System.out.println("\n");
 		System.out.println("-----Decription-------Plain Text---------");
